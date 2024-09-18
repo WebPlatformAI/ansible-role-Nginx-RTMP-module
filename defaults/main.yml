@@ -1,0 +1,4 @@
+---
+nginx_rtmp_module_source: build #default
+
+git_version: latest

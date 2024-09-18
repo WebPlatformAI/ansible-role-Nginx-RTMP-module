@@ -1,0 +1,6 @@
+---
+- name: Install Nginx RTMP module from apt
+  ansible.builtin.apt:
+    pkg:
+    - libnginx-mod-rtmp
+  become: true

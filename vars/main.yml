@@ -1,0 +1,5 @@
+---
+build_dir: "/opt/src"
+
+git_repo: https://github.com/ytdl-org/youtube-dl.git
+git_dir: "{{ build_dir }}/youtube-dl"

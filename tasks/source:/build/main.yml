@@ -1,0 +1,32 @@
+---
+# Build Nginx from source
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    pkg:
+    - build-essential
+    - git
+  become: true
+
+- name: Create a directory
+  ansible.builtin.file:
+    path: "{{ build_dir }}"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  become: true
+
+- name: Git clone latest
+  ansible.builtin.git:
+    repo: "{{ git_repo }}"
+    dest: "{{ git_dir }}"
+    update: no
+  when: git_version == "latest"
+
+- name: Git clone specific version
+  ansible.builtin.git:
+    repo: "{{ git_repo }}"
+    dest: "{{ git_dir }}"
+    update: no
+    version: "{{ git_version }}"
+  when: git_version != "latest"
